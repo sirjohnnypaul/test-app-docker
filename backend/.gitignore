@@ -1,0 +1,11 @@
+node_modules
+.vscode
+environments/*.env
+!environments/demo.env
+dist
+.idea
+upload
+.DS_Store
+.env
+logs
+data-postgres
