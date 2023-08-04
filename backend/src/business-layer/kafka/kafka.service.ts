@@ -65,6 +65,8 @@ export class KafkaService {
         eachMessage: async ({ topic, partition, message }) => {
           try {
             const { progress, total } = JSON.parse(message.value.toString());
+            // I have added this if statement to send email / send update by socket only when progress 
+            // is divisible by 1000 since it is the test task only
             if (progress % this.batchSize === 0 || progress === total) {
               await this._universalMailerService.sendMail(
                 'views/emails/test-email.hbs',
