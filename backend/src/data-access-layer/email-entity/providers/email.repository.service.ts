@@ -4,9 +4,7 @@ import { Repository, FindOneOptions } from 'typeorm';
 import { ApiModel } from '../../../models/api.model';
 import { EmailEntity } from '../entites/email.entity';
 
-export class EmailRepositoryService extends AbstractCrudRepositoryService<
-  EmailEntity
-> {
+export class EmailRepositoryService extends AbstractCrudRepositoryService<EmailEntity> {
   constructor(
     @InjectRepository(EmailEntity)
     private readonly _repo: Repository<EmailEntity>,
@@ -20,5 +18,4 @@ export class EmailRepositoryService extends AbstractCrudRepositoryService<
     const findOption: FindOneOptions = {};
     return {};
   }
-
 }

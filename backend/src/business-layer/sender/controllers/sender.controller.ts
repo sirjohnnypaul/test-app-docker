@@ -1,7 +1,4 @@
-import {
-  Body,
-  Controller, Get, Post,
-} from '@nestjs/common';
+import { Body, Controller, Get, Post } from '@nestjs/common';
 import { SenderService } from '../services/sender.service';
 import { SenderModel } from '../models/sender.model';
 
@@ -13,13 +10,11 @@ export class SenderController {
   sendBulkEmails(
     @Body() data: SenderModel.SenderDTO,
   ): Promise<SenderModel.SenderResponseDTO> {
-    console.log("PROCESSING", data.emails)
     return this._senderService.sendBulkEmails(data.emails);
   }
 
   @Get('status')
-  checkStatus(
-  ): boolean {
-    return true
+  checkStatus(): boolean {
+    return true;
   }
 }

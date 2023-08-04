@@ -14,19 +14,17 @@ import { NotFoundException } from '@nestjs/common';
  */
 export abstract class AbstractCrudRepositoryService<
   T,
-  K extends ApiModel.PaginationQuery = ApiModel.PaginationQuery
+  K extends ApiModel.PaginationQuery = ApiModel.PaginationQuery,
 > {
   constructor(private readonly _repository: Repository<T>) {}
 
   async findAll(filterData: K): Promise<ApiModel.PaginatedResponse<T>> {
-    const [data, totalCount]: [
-      T[],
-      number,
-    ] = await this._repository.findAndCount({
-      skip: (filterData.page - 1) * filterData.limit,
-      take: filterData.limit,
-      ...this.createFindOptions(filterData),
-    });
+    const [data, totalCount]: [T[], number] =
+      await this._repository.findAndCount({
+        skip: (filterData.page - 1) * filterData.limit,
+        take: filterData.limit,
+        ...this.createFindOptions(filterData),
+      });
 
     return this._preparePaginatedResponse(data, totalCount, filterData);
   }

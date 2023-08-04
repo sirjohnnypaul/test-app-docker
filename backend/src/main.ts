@@ -22,7 +22,9 @@ async function bootstrap(): Promise<void> {
   app.useStaticAssets(join(__dirname, '..', 'public'));
   app.setBaseViewsDir(join(__dirname, '..', 'views'));
   app.setViewEngine('hbs');
-  await kafkaService.emailProgressListener().catch((error) => {console.log("ERROR STARTING LISTENER",error)});
+  await kafkaService.emailProgressListener().catch(error => {
+    console.log('ERROR STARTING LISTENER', error);
+  });
   app.useGlobalPipes(
     new ValidationPipe({
       transform: true,

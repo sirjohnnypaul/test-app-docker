@@ -33,9 +33,8 @@ export namespace ApiModel {
     constructor(errors: ValidationError[]) {
       super(
         {
-          fields: ValidationDTOError._mapValidationErrorsToApiFieldError(
-            errors,
-          ),
+          fields:
+            ValidationDTOError._mapValidationErrorsToApiFieldError(errors),
         },
         HttpStatus.BAD_REQUEST,
       );
@@ -111,5 +110,4 @@ export namespace ApiModel {
   export interface ApiFieldError {
     [key: string]: string[];
   }
-
 }

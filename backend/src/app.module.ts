@@ -17,10 +17,7 @@ import { join } from 'path';
     }),
     ConfigModule.forRoot({
       validationSchema: Joi.object({
-        APP_PORT: Joi.number()
-          .required()
-          .integer()
-          .default(3000),
+        APP_PORT: Joi.number().required().integer().default(3000),
         DATABASE_USER: Joi.required(),
         DATABASE_PASSWORD: Joi.required(),
         DATABASE_NAME: Joi.required(),
@@ -31,7 +28,7 @@ import { join } from 'path';
       envFilePath: `./environments/${process.env.NODE_ENV || ''}.env`,
     }),
     TypeOrmModule.forRoot({
-      type: 'mariadb', 
+      type: 'mariadb',
       host: process.env.DATABASE_HOST,
       port: +process.env.DATABASE_PORT,
       username: process.env.DATABASE_USER,

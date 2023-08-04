@@ -1,12 +1,10 @@
 import { Module } from '@nestjs/common';
 import { KafkaService } from './kafka.service';
 import { AppGateway } from '../../app.gateway';
-import { ConfigModule } from '@nestjs/config';
+import { MailerModule } from '../mailer/mailer.module';
 
 @Module({
-  imports: [
-    ConfigModule.forRoot(), // This will load environment variables
-  ],
+  imports: [MailerModule],
   providers: [KafkaService, AppGateway],
   exports: [KafkaService],
 })
